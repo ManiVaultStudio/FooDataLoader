@@ -1,7 +1,6 @@
-#include "FooDataLoaderPlugin.h"
+#include "FooDataLoader.h"
 
 #include "noticifaction.h"
-
 #include "FooData/FooData.h"
 
 #include "Set.h"
@@ -13,7 +12,7 @@
 #include <complex>
 #include <vector>
 
-Q_PLUGIN_METADATA(IID "studio.manivault.FooDataLoaderPlugin")
+Q_PLUGIN_METADATA(IID "studio.manivault.FooDataLoader")
 
 using namespace mv;
 
@@ -21,14 +20,14 @@ using namespace mv;
 // View
 // =============================================================================
 
-FooDataLoaderPlugin::FooDataLoaderPlugin(const PluginFactory* factory):
+FooDataLoader::FooDataLoader(const PluginFactory* factory):
     LoaderPlugin(factory),
     _dataSetName("")
 {
     
 }
 
-FooDataLoaderPlugin::~FooDataLoaderPlugin(void)
+FooDataLoader::~FooDataLoader(void)
 {
     
 }
@@ -38,7 +37,7 @@ FooDataLoaderPlugin::~FooDataLoaderPlugin(void)
  * This function gets called when an instance of the plugin is created.
  * In this case when someone select the loader option from the menu.
  */
-void FooDataLoaderPlugin::init()
+void FooDataLoader::init()
 {
     addNotification(getExampleNotificationMessage());
 }
@@ -48,7 +47,7 @@ void FooDataLoaderPlugin::init()
  * from the menu containing loader plugins. This function is responsible for opening the
  * file(s) the user wants to open, process them appropriately and pass the final data to the core.
  */
-void FooDataLoaderPlugin::loadData()
+void FooDataLoader::loadData()
 {
     _dataSetName = "FooData";
     auto fooSet = mv::data().createDataset<FooData>("FooData", _dataSetName);
@@ -77,7 +76,7 @@ void FooDataLoaderPlugin::loadData()
     qDebug() << "Example file loaded. Num data points: " << fooSet->getNumPoints();
 }
 
-FooDataLoaderPluginFactory::FooDataLoaderPluginFactory()
+FooDataLoaderFactory::FooDataLoaderFactory()
 {
     getPluginMetadata().setDescription("Example loader plugin");
     getPluginMetadata().setSummary("This example shows how to implement a data loader plugin in ManiVault Studio.");
@@ -95,12 +94,12 @@ FooDataLoaderPluginFactory::FooDataLoaderPluginFactory()
     getPluginMetadata().setLicenseText("This plugin is distributed under the [LGPL v3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html) license.");
 }
 
-FooDataLoaderPlugin* FooDataLoaderPluginFactory::produce()
+FooDataLoader* FooDataLoaderFactory::produce()
 {
-    return new FooDataLoaderPlugin(this);
+    return new FooDataLoader(this);
 }
 
-mv::DataTypes FooDataLoaderPluginFactory::supportedDataTypes() const
+mv::DataTypes FooDataLoaderFactory::supportedDataTypes() const
 {
     DataTypes supportedTypes;
     supportedTypes.append(PointType);

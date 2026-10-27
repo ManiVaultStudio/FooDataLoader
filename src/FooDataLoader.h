@@ -9,12 +9,12 @@ using namespace mv::plugin;
 // Loader
 // =============================================================================
 
-class FooDataLoaderPlugin : public LoaderPlugin
+class FooDataLoader : public LoaderPlugin
 {
     Q_OBJECT
 public:
-    FooDataLoaderPlugin(const PluginFactory* factory);
-    ~FooDataLoaderPlugin(void) override;
+    FooDataLoader(const PluginFactory* factory);
+    ~FooDataLoader(void) override;
     
     void init() override;
 
@@ -32,17 +32,17 @@ private:
 // Factory
 // =============================================================================
 
-class FooDataLoaderPluginFactory : public LoaderPluginFactory
+class FooDataLoaderFactory : public LoaderPluginFactory
 {
     Q_INTERFACES(mv::plugin::LoaderPluginFactory mv::plugin::PluginFactory)
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID   "studio.manivault.FooDataLoaderPlugin"
+    Q_PLUGIN_METADATA(IID   "studio.manivault.FooDataLoader"
                       FILE  "PluginInfo.json")
     
 public:
-    FooDataLoaderPluginFactory();
+    FooDataLoaderFactory();
 
-    FooDataLoaderPlugin* produce() override;
+    FooDataLoader* produce() override;
 
     mv::DataTypes supportedDataTypes() const override;
 };

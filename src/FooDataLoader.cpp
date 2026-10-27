@@ -1,7 +1,7 @@
 #include "FooDataLoader.h"
 
 #include "noticifaction.h"
-#include "FooData/FooData.h"
+#include "FooDataPlugin/FooData.h"
 
 #include "Set.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <LoaderPlugin.h>
-#include "FooData/FooData.h"
+#include "FooDataPlugin/FooData.h"
 
 using namespace mv::plugin;
 

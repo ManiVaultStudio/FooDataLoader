@@ -1,6 +1,6 @@
 #include "FooDataLoaderPlugin.h"
 
-#include "../Common/common.h"
+#include "noticifaction.h"
 
 #include "FooData/FooData.h"
 

@@ -5,7 +5,7 @@ option(MV_UNITY_BUILD "Combine target source files into batches for faster compi
 # -----------------------------------------------------------------------------
 # FooDataLoader Plugin
 # -----------------------------------------------------------------------------
-PROJECT("FooDataLoaderPlugin" LANGUAGES CXX)
+PROJECT("FooDataLoader" LANGUAGES CXX)
 
 # -----------------------------------------------------------------------------
 # CMake Options
@@ -31,19 +31,24 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../Common ${CMAKE_CURRENT_BINARY_DI
 # -----------------------------------------------------------------------------
 # Define the plugin sources
 set(PLUGIN_SOURCES
-    src/FooDataLoaderPlugin.h
-    src/FooDataLoaderPlugin.cpp
+    src/FooDataLoader.h
+    src/FooDataLoader.cpp
     PluginInfo.json
 )
 
+set(NOTIFICATION_SOURCES
+    src/notification.h
+    src/notification.cpp
+)
+
 source_group(Plugin FILES ${PLUGIN_SOURCES})
-source_group(Common FILES ${COMMON_FILES})
+source_group(Notification FILES ${NOTIFICATION_SOURCES})
 
 # -----------------------------------------------------------------------------
 # CMake Target
 # -----------------------------------------------------------------------------
 # Create dynamic library for the plugin
-add_library(${PROJECT_NAME} SHARED ${PLUGIN_SOURCES} ${COMMON_FILES})
+add_library(${PROJECT_NAME} SHARED ${PLUGIN_SOURCES} ${NOTIFICATION_SOURCES})
 
 # -----------------------------------------------------------------------------
 # Target include directories

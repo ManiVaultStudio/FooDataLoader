@@ -1,6 +1,6 @@
 #include "FooDataLoader.h"
 
-#include "noticifaction.h"
+#include "notification.h"
 #include "FooDataPlugin/FooData.h"
 
 #include "Set.h"

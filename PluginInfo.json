@@ -1,0 +1,9 @@
+{
+    "name" : "Foo Data Loader",
+    "version" :  {
+        "plugin" : "1.0",
+        "core" : ["1.5"]
+    },
+    "type" : "Loader",
+    "dependencies" : []
+}

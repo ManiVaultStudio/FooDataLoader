@@ -21,7 +21,7 @@ public:
   void loadData() Q_DECL_OVERRIDE;
 
 private:
-  Dataset<Foo> _fooDataSet;
+  mv::Dataset<Foo> _fooDataSet;
 };
 
 

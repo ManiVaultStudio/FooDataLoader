@@ -20,10 +20,7 @@ public:
   void loadData() Q_DECL_OVERRIDE;
 
 private:
-  QString _dataSetName;
-  DataFrame _fooDataDf;
   Dataset<Foo> _fooDataSet;
-  DataFrame _fooMetadata;
 };
 
 

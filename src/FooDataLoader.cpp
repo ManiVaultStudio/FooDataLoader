@@ -100,6 +100,6 @@ FooDataLoader* FooDataLoaderFactory::produce()
 mv::DataTypes FooDataLoaderFactory::supportedDataTypes() const
 {
     DataTypes supportedTypes;
-    supportedTypes.append(PointType);
+    supportedTypes.append(FooType);
     return supportedTypes;
 }

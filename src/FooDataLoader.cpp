@@ -49,8 +49,6 @@ void FooDataLoader::init()
  */
 void FooDataLoader::loadData()
 {
-    _dataSetName = "FooData";
-    auto fooSet = mv::data().createDataset<FooData>("FooData", _dataSetName);
     
     // Create 2D example data by randomly generating 1000 points
     std::default_random_engine generator;
@@ -66,7 +64,7 @@ void FooDataLoader::loadData()
     }
 
     // Passing example data with 1000 points and 2 dimensions
-    fooSet->setData(exampleData.data());
+    _fooDataSet->setData(exampleData);
 
     qDebug() << "Number of dimensions: " << exampleData.size() / numPoints;
 

@@ -9,22 +9,21 @@ using namespace mv::plugin;
 // Loader
 // =============================================================================
 
-class FooDataLoader : public LoaderPlugin
-{
-    Q_OBJECT
+class FooDataLoader : public LoaderPlugin {
+  Q_OBJECT
 public:
-    FooDataLoader(const PluginFactory* factory);
-    ~FooDataLoader(void) override;
-    
-    void init() override;
+  FooDataLoader(const PluginFactory* factory);
+  ~FooDataLoader(void) override;
 
-    void loadData() Q_DECL_OVERRIDE;
+  void init() override;
+
+  void loadData() Q_DECL_OVERRIDE;
 
 private:
-    QString _dataSetName;
-    DataFrame _fooDataDf;
-    Dataset<Points> _fooData;
-    DataFrame _fooMetadata;
+  QString _dataSetName;
+  DataFrame _fooDataDf;
+  Dataset<Foo> _fooDataSet;
+  DataFrame _fooMetadata;
 };
 
 
@@ -32,17 +31,16 @@ private:
 // Factory
 // =============================================================================
 
-class FooDataLoaderFactory : public LoaderPluginFactory
-{
-    Q_INTERFACES(mv::plugin::LoaderPluginFactory mv::plugin::PluginFactory)
+class FooDataLoaderFactory : public LoaderPluginFactory {
+  Q_INTERFACES(mv::plugin::LoaderPluginFactory mv::plugin::PluginFactory)
     Q_OBJECT
     Q_PLUGIN_METADATA(IID   "studio.manivault.FooDataLoader"
-                      FILE  "PluginInfo.json")
-    
+      FILE  "PluginInfo.json")
+
 public:
-    FooDataLoaderFactory();
+  FooDataLoaderFactory();
 
-    FooDataLoader* produce() override;
+  FooDataLoader* produce() override;
 
-    mv::DataTypes supportedDataTypes() const override;
+  mv::DataTypes supportedDataTypes() const override;
 };

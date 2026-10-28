@@ -69,9 +69,9 @@ void FooDataLoader::loadData()
     qDebug() << "Number of dimensions: " << exampleData.size() / numPoints;
 
     // Notify the core system of the new data
-    events().notifyDatasetAdded(fooSet);
+    events().notifyDatasetAdded(_fooDataSet);
 
-    qDebug() << "Example file loaded. Num data points: " << fooSet->getNumPoints();
+    qDebug() << "Example file loaded. Num data points: " << _fooDataSet->getNumPoints();
 }
 
 FooDataLoaderFactory::FooDataLoaderFactory()

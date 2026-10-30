@@ -19,7 +19,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 find_package(Qt6 COMPONENTS Widgets WebEngineWidgets REQUIRED)
 
 find_package(ManiVault COMPONENTS Core PointData CONFIG QUIET)
-find_package(FooData CONFIG QUIET)
+find_package(FooDataPlugin CONFIG QUIET)
 mv_project_defaults()
 
 # -----------------------------------------------------------------------------
@@ -73,7 +73,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::WebEngineWidgets)
 # Link to ManiVault and data plugins
 target_link_libraries(${PROJECT_NAME} PRIVATE ManiVault::Core)
 target_link_libraries(${PROJECT_NAME} PRIVATE ManiVault::PointData)
-target_link_libraries(${PROJECT_NAME} PRIVATE FooData::FooData)
+target_link_libraries(${PROJECT_NAME} PRIVATE FooDataPlugin::FooData)
 
 # -----------------------------------------------------------------------------
 # Target installation
